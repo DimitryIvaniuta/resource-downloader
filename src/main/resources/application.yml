@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5443/${DB_NAME:filedownloadrd}
+    username: ${DB_USERNAME:postgresrd}
+    password: ${DB_PASSWORD:secret}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  flyway:
+    baseline-on-migrate: true
+
+# Custom portal properties for login and resource access.
+app:
+  portal:
+    loginUrl:    ${PORTAL_LOGIN_URL:https://third-party-portal.com/login}
+    resourceUrl: ${PORTAL_RESOURCE_URL:https://third-party-portal.com/protected-page}
+    username:    ${PORTAL_USERNAME:portalUser}
+    password:    ${PORTAL_PASSWORD:portalPass}
+
+# Directory where downloaded files will be saved.
+download:
+  dir: ${DOWNLOAD_DIR:./downloads}
+
+custom:
+  ext:      ${CUSTOM_EXT:-my-pro}
+  rate:     ${CUSTOM_RATE:rates}
+  url:      ${CUSTOM_URL:custom_url}
+  id:       ${CUSTOM_ID:url_id}
+  download: ${CUSTOM_DOWNLOAD:https://www.example.com/download?id=%s&session_id=}

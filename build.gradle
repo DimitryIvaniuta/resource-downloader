@@ -1,0 +1,46 @@
+plugins {
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Web and Data
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql'
+
+    // HTML parsing with Jsoup
+    implementation 'org.jsoup:jsoup:1.19.1'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.3'
+
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+    implementation 'io.github.cdimascio:dotenv-java:3.2.0'
+
+    // OAuth2 Client for "Continue with Google"
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.security:spring-security-oauth2-jose'
+
+    // Flyway
+    implementation('org.flywaydb:flyway-core:11.3.0')
+    implementation('org.flywaydb:flyway-database-postgresql:11.3.0')
+
+    // Lombok
+    compileOnly("org.projectlombok:lombok:1.18.36")
+    annotationProcessor("org.projectlombok:lombok:1.18.36")
+
+    // Lombok for tests
+    testCompileOnly("org.projectlombok:lombok:1.18.36")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.36")
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
